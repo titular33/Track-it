@@ -7,6 +7,7 @@ import Today from './components/Today/';
 import Habits from './components/Habits/';
 import Historic from './components/Historic/';
 import '../css/reset.css';
+import '../css/style.css';
 
 function App() {
   return (
