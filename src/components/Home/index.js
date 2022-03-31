@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import Loader from "react-loader-spinner";
 import Image from '../../images/logo.png';
+import UserContext from '../../contexts/UserContexts';
 
 export default function Home (){
     const [email,setEmail] = useState ("");
     const [password, setPassword] = useState ("");
-    const [token, setToken] = useState ("");
     const [loading, setLoading] = useState(false);
+    const { setUser }= useContext(UserContext);
     let history = useHistory();
     const body = {
         email,
@@ -28,7 +29,7 @@ export default function Home (){
                     const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", body);
                     setLoading(true);
                     request.then(response => {
-                        setToken(response.data.token);
+                        setUser(response.data.token);
                         history.push("/hoje")});
                     request.catch(error => {
                         alert("Erro! Email e/ou senha incorreto(s)");
