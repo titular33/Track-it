@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import Header from '../Header';
+import Footer from '../Footer';
 export default function Habits (){
     const day = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [habitName,setHabitName] = useState ("");
@@ -29,6 +30,7 @@ export default function Habits (){
             </Buttons>
         </NewHabit>
         <Text>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</Text>
+        <Footer/>
         </>
     )
 }
