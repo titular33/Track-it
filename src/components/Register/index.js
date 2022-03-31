@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 export default function Register(){
 
@@ -8,6 +9,14 @@ export default function Register(){
     const [password, setPassword] = useState ("");
     const [name, setName] = useState ("");
     const [image, setImage] = useState ("");
+    let history = useHistory();
+
+    const body= {
+        email,
+        name,
+        image,
+        password
+    }
 
     return(
         <>
@@ -17,7 +26,11 @@ export default function Register(){
             <Input type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}></Input>
             <Input type="text" placeholder="nome" onChange={e => setName(e.target.value)}></Input>
             <Input type="text" placeholder="foto" onChange={e => setImage(e.target.value)}></Input>
-            <Button>Cadastrar</Button>
+            <Button onClick={() => {
+                const request = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up", body);
+                request.then(response => history.push("/"));
+                request.catch(error => alert("Erro! Preencha novamente os campos."))
+                }}>Cadastrar</Button>
         </Data>
         <Link to="/">
             <Login>Já tem uma conta? Faça login!</Login>

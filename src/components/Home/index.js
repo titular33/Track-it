@@ -1,18 +1,33 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 export default function Home (){
     const [email,setEmail] = useState ("");
     const [password, setPassword] = useState ("");
+    const [token, setToken] = useState ("");
+    let history = useHistory();
+    const body = {
+        email,
+        password
+    }
     return (
         <>
         <Title>TrackIt</Title>
         <Data>
             <Input type="text" placeholder="email" onChange={e => setEmail(e.target.value)}></Input>
             <Input type="password" placeholder="senha" onChange={e => setPassword(e.target.value)}></Input>
-            <Button>Entrar</Button>
+            <Button onClick ={() => {
+                const request = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login', body)
+                request.then(response => {
+                    setToken(response.data.token)
+                    localStorage.setItem('token', response.data.token)
+                    history.push('/hoje')
+                });
+                request.catch(error => alert("Erro ao logar, verifique seus dados! Email e/ou senha incorretos!"))
+            }} > Entrar </Button>
         </Data>
         <Link to="/cadastro">
             <Register>Não tem uma conta? Cadastre-se!</Register>
