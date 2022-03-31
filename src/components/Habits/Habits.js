@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import Header from '../Header';
 export default function Habits (){
     const day = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [habitName,setHabitName] = useState ("");
     const [addHabits, setAddHabits] = useState(false);
 
+
     return(
         <>        
+        <Header/>
         <HabitsDiv>
             <MyHabits>
                 Meus hábitos
