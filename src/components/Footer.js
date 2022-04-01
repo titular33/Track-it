@@ -1,31 +1,36 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import ProgressContext from '../contexts/ProgressContexts';
+import { useContext } from 'react';
 
 export default function Footer () {
-    const percentage=66;
+    const progress = useContext(ProgressContext);
     return(
         <Bottom>
             <Link to="/habitos">
-                <Text>Hábitos</Text>
+                <p>Hábitos</p>
             </Link>
             <Link to="/hoje">
-            <Circle>             
-                    <CircularProgressbar value={percentage} text="Hoje" 
-                    styles={buildStyles({
-                        textColor: "white",
-                        pathColor: "white",
-                        trailColor: "#52B6FF"})}/>
-                </Circle>
+            <div>             
+                    <CircularProgressbar 
+                        value={progress} 
+                        text="Hoje" 
+                        styles={buildStyles({
+                            textColor: "white",
+                            pathColor: "white",
+                            trailColor: "#52B6FF"
+                        })}/>
+                </div>
             </Link>
             <Link to="/historico">
-                <Text>Histórico</Text>
+                <p>Histórico</p>
             </Link>
         </Bottom>
     )
 }
 
-const Bottom = styled.div`
+const Bottom = styled.footer`
     position: fixed;
     bottom: 0;
     left: 0;
@@ -36,15 +41,13 @@ const Bottom = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-`
 
-const Text = styled.p`
+p {
     font-family: 'Lexend Deca', sans-serif;
     color: #52B6FF;
     font-size: 18px;
-`
-
-const Circle = styled.div`
+}
+div{
     width: 91px;
     height: 91px;
     margin-bottom: 50px;
@@ -57,4 +60,5 @@ const Circle = styled.div`
     align-items: center;
     justify-content: center;
     padding: 6px;
-`
+}
+`;
