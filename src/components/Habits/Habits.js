@@ -23,7 +23,6 @@ export default function Habits (){
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    console.log(items);
 
 	useEffect(() => {
         const config = {
@@ -40,7 +39,6 @@ export default function Habits (){
         request.catch(error => alert("Erro! Tente novamente :/"))
 	}, []);
 
-    console.log(day);
 
 
     return(
