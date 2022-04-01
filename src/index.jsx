@@ -9,7 +9,7 @@ ReactDOM.render(
     <App/>
     , root
 );
-serviceWorkerRegistration.updateViaCache();
+serviceWorkerRegistration.unregister();
 
 reportWebVitals();
 
