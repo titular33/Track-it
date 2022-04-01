@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { CheckmarkOutline } from 'react-ionicons'
-import { CloseOutline } from 'react-ionicons'
+import { CheckmarkOutline, CloseOutline} from 'react-ionicons'
 export default function HabitsCheck ({habitName, done}){
     return(
         <>

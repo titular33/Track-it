@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
 import Header from "../Header";
+import {ThreeDots} from "react-loader-spinner";
 import Footer from "../Footer";
 import axios from "axios";
 import UserContext from "../../contexts/UserContexts";
 import { TrashOutline } from "react-ionicons";
-import Loader from "react-loader-spinner";
 
 export default function Habits() {
   const { user, setUser } = useContext(UserContext);
@@ -104,9 +104,8 @@ export default function Habits() {
             }}
           >
             {loading === true ? "" : "Salvar"}
-            <Loader
+            <ThreeDots
               visible={loading}
-              type="ThreeDots"
               color="#FFF"
               height={10}
               width={40}
@@ -201,7 +200,7 @@ export default function Habits() {
         ]);
       });
 
-      request.catch((error) => {
+      request.catch(() => {
         alert("Erro! Tente novamente :/");
         setLoading(false);
       });

@@ -4,12 +4,12 @@ import { useContext } from "react";
 
 export default function Header (){
   const { user }= useContext(UserContext);
-  const { image } = user;
+  const { image, name } = user;
 
   return(
       <Top>
           <h1>TrackIt</h1>
-          <img src={image} />
+          <img src={image} alt={name}/>
       </Top>
   )
 }
