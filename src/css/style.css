@@ -1,3 +1,26 @@
-body{
+bbody {
     background-color: #f2f2f2;
-}
+  }
+  
+  .calendar {
+    border-radius: 10px;
+    border: 0px;
+    margin: auto;
+    margin-top: 15px;
+    width: 90%;
+  }
+  
+  .false {
+    background-color: #ea5766;
+    border-radius: 50%;
+  }
+  
+  .true {
+    background-color: #8cc654;
+    border-radius: 50%;
+  }
+  
+  .today {
+    background-color: #fcee81;
+    color: black;
+  }
