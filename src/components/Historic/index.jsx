@@ -14,9 +14,9 @@ import CalendarClick from "./CalendarClick";
 export default function Historic() {
     const [date, setDate] = useState(new Date());
     const { user } = useContext(UserContext);
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState([""]);
     const now = dayjs().format("DD/MM/YYYY");
-    const days = items.map((d, i) => d.day);
+    const days = items.map((d) => d.day);
     const [state, setstate] = useState(false);
     const [information, setInformation] = useState([]);
     const config = {
@@ -27,7 +27,7 @@ export default function Historic() {
   
     useEffect(() => {
       const request = axios.get(
-          `${process.env.REACT_APP_API_BASE_URL}/habits/history/daily`,
+          "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/history/daily",
         config
       );
   
